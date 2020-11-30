@@ -64,6 +64,6 @@ C언어에서 이진 탐색 트리를 연결리스트로 구현한 라이브러�
 
 <img src="./tree_example.png"  width="500" height="370">
 
-### 출력 결과
+## 출력 결과
 
-<img src="./tree_result.png"  width="180" height="150">
+<img src="./tree_result.png"  width="160" height="130">
