@@ -6,11 +6,11 @@ C언어에서 이진 탐색 트리를 연결리스트로 구현한 라이브러�
 
   #include "binary_search_tree.h"
   
-## 스택 선언
+## 헤드 선언
 
   t_node  * head = NULL;
   
-## 스택 함수
+## 이진탐색트리 함수
 
 ### create()
 
@@ -60,8 +60,10 @@ C언어에서 이진 탐색 트리를 연결리스트로 구현한 라이브러�
 
   gcc -L. -ltree main.c
 
-## 스택 예제
+## 이진탐색트리 예제
 
 <img src="./tree_example.png"  width="500" height="370">
 
-<img src="./tree_result.png"  width="240" height="150">
+### 출력 결과
+
+<img src="./tree_result.png"  width="180" height="150">
