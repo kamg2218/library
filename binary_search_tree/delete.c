@@ -47,6 +47,7 @@ static void		move(t_node **head, t_node *tmp)
 		if (tmp->right_next)
 		{
 			new = tmp_right_next(tmp);
+			break ;
 		}
 	}
 	if (tmp->prev && tmp == tmp->prev->left_next)
