@@ -1,7 +1,42 @@
 #include "binary_search_tree.h"
 
+static t_node	*tmp_right_next(t_node *tmp)
+{
+	t_node		*new;
+	t_node		*old;
+	t_node		*tail;
+
+	new = tmp->right_next;
+	old = new;
+	while (new->left_next)
+		new = new->left_next;
+	if (new != old)
+	{
+		old = new->prev;
+		new->prev = NULL;
+		while (old != tmp)
+		{
+			tail = new;
+			while (tail->right_next)
+				tail = tail->right_next;
+			old->left_next = NULL;
+			tail->right_next = old;
+			old = old->prev;
+			tail->right_next->prev = tail;
+		}
+		if (tmp->prev == NULL)
+			new->prev = NULL;
+		else
+			new->prev = tmp->prev;
+	}
+	return (new);
+}
+
 static void		move(t_node **head, t_node *tmp)
 {
+	t_node		*new;
+
+	new = NULL;
 	while (tmp->left_next || tmp->right_next)
 	{
 		while (tmp->left_next)
@@ -11,16 +46,15 @@ static void		move(t_node **head, t_node *tmp)
 		}
 		if (tmp->right_next)
 		{
-			tmp->content = tmp->right_next->content;
-			tmp = tmp->right_next;
+			new = tmp_right_next(tmp);
 		}
 	}
 	if (tmp->prev && tmp == tmp->prev->left_next)
-		tmp->prev->left_next = NULL;
+		tmp->prev->left_next = new;
 	else if (tmp->prev && tmp == tmp->prev->right_next)
-		tmp->prev->right_next = NULL;
+		tmp->prev->right_next = new;
 	if (tmp == *head)
-		*head = NULL;
+		*head = new;
 	free(tmp);
 }
 
