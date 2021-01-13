@@ -12,6 +12,8 @@ void			destroy(t_node **head)
 			tmp = tmp->left_next;
 		while (tmp->right_next)
 			tmp = tmp->right_next;
+		if (tmp->left_next)
+			continue ;
 		pre = tmp->prev;
 		if (pre && pre->right_next == tmp)
 			pre->right_next = NULL;
